@@ -213,6 +213,10 @@ group by 1;
 
 ## **10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi -how many points do customer A and B have at the end of January?**
 
+### **Assumption**
+Since it is not instructed clearly whether to include points before the customer joins the program or not,\
+I have considered to include points only after the program is joined
+
 ```sql
 with cte as 
 	(select s.customer_id, s.order_date, m.join_date, 
@@ -308,6 +312,8 @@ select *,
         end as ranking
 from cte;
 ```
+
+
 
 
 
