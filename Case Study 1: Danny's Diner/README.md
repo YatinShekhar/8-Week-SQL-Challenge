@@ -38,6 +38,9 @@ group by 1;
 | B           | 74     |
 | C           | 36     |
 
+- Customer A spends $76\
+- Customer B spends $74\
+- Customer C spends $36
 
 ## **2. How many days has each customer visited the restaurant?**
 
@@ -52,12 +55,16 @@ group by 1;
 | A           | 4            |
 | B           | 6            |
 | C           | 2            |
+
+- Customer A visited 4 days\
+- Customer B visited 6 days\
+- Customer C visited 2 days
  
 ## **3. What was the first item from the menu purchased by each customer?**
 
 ### **Assumption**
-Since the `exact time` of purchase is not mentioned, therefore a single customer can\
-have more than one item as their first purchase.
+_Since the `exact time` of purchase is not mentioned, therefore a single customer can\
+have more than one item as their first purchase._
 
 ```sql
 with cte as 
@@ -77,6 +84,10 @@ group by 1,2;
 | B           | curry        |
 | C           | ramen        |
 
+- Customer A ordered `sushi` and `curry` as its first order\
+- Customer B ordered `curry`\
+- Customer C ordered `ramen`
+
 ## **4. What is the most purchased item on the menu and how many times was it purchased by all customers?**
 
 ```sql
@@ -93,6 +104,8 @@ where rn = 1;
 | product_name | purchases |
 |--------------|-----------|
 | ramen        | 8         |
+
+- `Ramen` is purchased most number of times i.e., 8 times
 
 ## **5. Which item was the most popular for each customer?**
 
@@ -117,11 +130,14 @@ where rn = 1;
 | B           | ramen        |
 | C           | ramen        |
 
+- Customer A and C likes `ramen` the most\
+- Customer B likes all 3 dishes: `curry` `sushi` and `ramen`\
+
 ## **6. Which item was purchased first by the customer after they became a member?**
 
 ### **Assumption**
-Since the `exact time` of the order and `exact time` of membership is not mentioned,\
-therefore I have considered the membership just before the order made by the customer.
+_Since the `exact time` of the order and `exact time` of membership is not mentioned,\
+therefore I have considered the membership just before the order made by the customer._
 
 ```sql
 with cte as 
@@ -142,11 +158,13 @@ where rn = 1;
 | A           | curry        |
 | B           | sushi        |
 
+- Customer A ordered `curry` and Customer B ordered `sushi` after they joined the membership
+
 ## **7. Which item was purchased just before the customer became a member?**
 
 ### **Assumption**
-Since the `exact time` of the order and `exact time` of membership is not mentioned,\
-therefore I have considered the membership just before the order made by the customer.
+_Since the `exact time` of the order and `exact time` of membership is not mentioned,\
+therefore I have considered the membership just before the order made by the customer._
 
 ```sql
 with cte as 
@@ -168,12 +186,18 @@ where rn = 1;
 | A           | curry        |
 | B           | sushi        |
 
+- Customer A and B ordered `sushi` before they were members\
+- Customer A ordered `curry` as well
+
 ## **8. What is the total items and amount spent for each member before they became a member?**
+
+### **Assumption**
+_Included only those customers who converted to members_
 
 ```sql
 select s.customer_id, count(*) as products, sum(price) as amount
 from sales s
-left join 
+inner join 
 members m using(customer_id)
 inner join 
 menu me using(product_id)
@@ -185,7 +209,9 @@ group by 1;
 |-------------|----------|--------|
 | A           | 2        | 25     |
 | B           | 3        | 40     |
-| C           | 3        | 36     |
+
+- Customer A spend $25\
+- Customer B spend $40 
 
 ## **9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?**
 
@@ -211,11 +237,15 @@ group by 1;
 | B           | 940          |
 | C           | 360          |
 
+- Customer A has total 860 points\
+- Customer B has maximum of all that is 940 points\
+- Customer C has least points that is 360
+
 ## **10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi -how many points do customer A and B have at the end of January?**
 
 ### **Assumption**
-Since it is not instructed clearly whether to include points before the customer joins the program or not,\
-I have considered to include points only after the program is joined
+_Since it is not instructed clearly whether to include points before the customer joins the program or not,\
+I have considered to include points only after the program is joined_
 
 ```sql
 with cte as 
@@ -227,16 +257,23 @@ with cte as
 	inner join 
     menu me using(product_id) 
 	where order_date >= join_date and order_date <= '2021-01-31')
-select customer_id, sum(price)*2*10 as points
+select customer_id,
+		sum(case
+			when product_name = 'Sushi' then price*2*10
+			when date_diff < 7 and order_date <= '2021-01-31' then price*2*10
+			else price*10
+		end) as points
 from cte
-where date_diff < 7
 group by 1;
 ```
 
 | customer_id | points |
 |-------------|--------|
-| B           | 200    |
 | A           | 1020   |
+| B           | 320    |
+
+- Total points for Customer A is 1020\
+- Total points for Customer B is 320
 
 # Bonus Questions
 
@@ -312,6 +349,9 @@ select *,
         end as ranking
 from cte;
 ```
+
+# Insights
+
 
 
 
