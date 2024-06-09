@@ -38,8 +38,8 @@ group by 1;
 | B           | 74     |
 | C           | 36     |
 
-- Customer A spends $76\
-- Customer B spends $74\
+- Customer A spends $76
+- Customer B spends $74
 - Customer C spends $36
 
 ## **2. How many days has each customer visited the restaurant?**
@@ -56,8 +56,8 @@ group by 1;
 | B           | 6            |
 | C           | 2            |
 
-- Customer A visited 4 days\
-- Customer B visited 6 days\
+- Customer A visited 4 days
+- Customer B visited 6 days
 - Customer C visited 2 days
  
 ## **3. What was the first item from the menu purchased by each customer?**
@@ -84,8 +84,8 @@ group by 1,2;
 | B           | curry        |
 | C           | ramen        |
 
-- Customer A ordered `sushi` and `curry` as its first order\
-- Customer B ordered `curry`\
+- Customer A ordered `sushi` and `curry` as its first order
+- Customer B ordered `curry`
 - Customer C ordered `ramen`
 
 ## **4. What is the most purchased item on the menu and how many times was it purchased by all customers?**
@@ -130,8 +130,8 @@ where rn = 1;
 | B           | ramen        |
 | C           | ramen        |
 
-- Customer A and C likes `ramen` the most\
-- Customer B likes all 3 dishes: `curry` `sushi` and `ramen`\
+- Customer A and C likes `ramen` the most
+- Customer B likes all 3 dishes: `curry` `sushi` and `ramen`
 
 ## **6. Which item was purchased first by the customer after they became a member?**
 
@@ -186,7 +186,7 @@ where rn = 1;
 | A           | curry        |
 | B           | sushi        |
 
-- Customer A and B ordered `sushi` before they were members\
+- Customer A and B ordered `sushi` before they were members
 - Customer A ordered `curry` as well
 
 ## **8. What is the total items and amount spent for each member before they became a member?**
@@ -210,7 +210,7 @@ group by 1;
 | A           | 2        | 25     |
 | B           | 3        | 40     |
 
-- Customer A spend $25\
+- Customer A spend $25
 - Customer B spend $40 
 
 ## **9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?**
@@ -237,8 +237,8 @@ group by 1;
 | B           | 940          |
 | C           | 360          |
 
-- Customer A has total 860 points\
-- Customer B has maximum of all that is 940 points\
+- Customer A has total 860 points
+- Customer B has maximum of all that is 940 points
 - Customer C has least points that is 360
 
 ## **10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi -how many points do customer A and B have at the end of January?**
@@ -272,7 +272,7 @@ group by 1;
 | A           | 1020   |
 | B           | 320    |
 
-- Total points for Customer A is 1020\
+- Total points for Customer A is 1020
 - Total points for Customer B is 320
 
 # Bonus Questions
