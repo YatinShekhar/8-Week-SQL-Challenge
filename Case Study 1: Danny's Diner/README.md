@@ -16,7 +16,7 @@ personalised experience for his loyal customers.
 # Entity Relationship Diagram 📊
 ![Danny's Diner](https://github.com/YatinShekhar/8-Week-SQL-Challenge/assets/121398971/9730e9d7-4803-42fc-a903-47e87b9d0339)
 
-# Note 💡
+# Note: 💡
 
 Their are some questions which demands more accurate data, since we lack precise data on the matter,\
 I have made some assumptions on my own. 
@@ -38,9 +38,9 @@ group by 1;
 | B           | 74     |
 | C           | 36     |
 
-- Customer A spends $76
-- Customer B spends $74
-- Customer C spends $36
+- **Customer A** spends the most in Danny's restaurant i.e., `$76.00`
+- Followed by **Customer B** who spend `$74.00`
+- **Customer C** spends the least which is `$36.00`
 
 ## **2. How many days has each customer visited the restaurant?**
 
@@ -56,9 +56,9 @@ group by 1;
 | B           | 6            |
 | C           | 2            |
 
-- Customer A visited 4 days
-- Customer B visited 6 days
-- Customer C visited 2 days
+- **Customer A** visited `4 days`
+- While **Customer B** visited the most i.e., `6 days`
+- Whereas **Customer C** visited the least of `2 days`
  
 ## **3. What was the first item from the menu purchased by each customer?**
 
@@ -84,9 +84,9 @@ group by 1,2;
 | B           | curry        |
 | C           | ramen        |
 
-- Customer A ordered `sushi` and `curry` as its first order
-- Customer B ordered `curry`
-- Customer C ordered `ramen`
+- **Customer A** ordered `sushi` and `curry` as its first order
+- **Customer B** ordered `curry`
+- While **Customer C** ordered `ramen`
 
 ## **4. What is the most purchased item on the menu and how many times was it purchased by all customers?**
 
@@ -105,7 +105,7 @@ where rn = 1;
 |--------------|-----------|
 | ramen        | 8         |
 
-- `Ramen` is purchased most number of times i.e., 8 times
+- `Ramen` is the most demanding dish in the Danny's menu. It was ordered `8 times`
 
 ## **5. Which item was the most popular for each customer?**
 
@@ -130,8 +130,8 @@ where rn = 1;
 | B           | ramen        |
 | C           | ramen        |
 
-- Customer A and C likes `ramen` the most
-- Customer B likes all 3 dishes: `curry` `sushi` and `ramen`
+- **Customer A** and **Customer C** likes `ramen` the most
+- **Customer B** likes all 3 dishes: `curry` `sushi` and `ramen`
 
 ## **6. Which item was purchased first by the customer after they became a member?**
 
@@ -158,7 +158,7 @@ where rn = 1;
 | A           | curry        |
 | B           | sushi        |
 
-- Customer A ordered `curry` and Customer B ordered `sushi` after they joined the membership
+- **Customer A** ordered `curry` and **Customer B** ordered `sushi` after they joined the membership
 
 ## **7. Which item was purchased just before the customer became a member?**
 
@@ -186,8 +186,8 @@ where rn = 1;
 | A           | curry        |
 | B           | sushi        |
 
-- Customer A and B ordered `sushi` before they were members
-- Customer A ordered `curry` as well
+- **Customer A** and **Customer B** ordered `sushi` just before they became members
+- While **Customer A** also ordered `curry`
 
 ## **8. What is the total items and amount spent for each member before they became a member?**
 
@@ -210,8 +210,8 @@ group by 1;
 | A           | 2        | 25     |
 | B           | 3        | 40     |
 
-- Customer A spend $25
-- Customer B spend $40 
+- **Customer A** purchased `2 products` and spend `$25.00` just before they become the members
+- While **Customer B** spend `$40.00` and purchased a total of `3 products`
 
 ## **9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?**
 
@@ -237,9 +237,9 @@ group by 1;
 | B           | 940          |
 | C           | 360          |
 
-- Customer A has total 860 points
-- Customer B has maximum of all that is 940 points
-- Customer C has least points that is 360
+- **Customer A** has total `860 points`
+- **Customer B** has maximum of all that is `940 points`
+- **Customer C** has least points that is `360 points`
 
 ## **10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi -how many points do customer A and B have at the end of January?**
 
@@ -272,8 +272,8 @@ group by 1;
 | A           | 1020   |
 | B           | 320    |
 
-- Total points for Customer A is 1020
-- Total points for Customer B is 320
+- **Customer A** took the most advantage of the offer and earned `1020 points`
+- Total points for **Customer B** is `320 points`
 
 # Bonus Questions
 
@@ -350,7 +350,33 @@ select *,
 from cte;
 ```
 
-# Insights
+# Insights: 🔬
+
+## 1. High-Value Customers
+
+`Customer A` and `Customer B` contributes significantly to restaurant's revenue, therefore they could be targeted for loyalty \
+programs and exclusive offers.
+
+## 2. Menu Popularity
+
+`Ramen` is the most purchased dish in the menu, indicating its strong appeal to customers. It could be promoted further and new variations\
+of Ramen can be introduced which would increase the restaurant's revenue.
+
+## 3. Membership Conversion
+
+`Sushi `appears to be a common choice before membership sign-up, indicating it may play a role in customer satisfaction\
+that leads to membership conversion.
+
+## 4. Promotional Effectiveness
+
+The significant points earned during the promotional period `(2x points on each order for one week)` highlight the potential of\
+time-limited offers. Therefore, the restaurant should invoke these offers in a timely manner which would increase sales.
+
+
+
+
+
+
 
 
 
