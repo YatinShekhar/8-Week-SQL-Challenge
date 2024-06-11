@@ -5,11 +5,11 @@ It is the first case study of **8 Week SQL Challenge**.\
 I have used `MySql` to get the insights for [Danny Ma's](https://github.com/datawithdanny) restaurant to keep his business afloat.
 
 # Table Of Content
- * [Project Overview](#project-overview)
- * [Entity Relationship Diagram](#entity-relationship-diagram)
- * [Note](#note)
- * [Case Study Questions](#case-study-questions)
- * [Insights](#insights)
+ * [Project Overview](#project-overview-)
+ * [Entity Relationship Diagram](#entity-relationship-diagram-)
+ * [Note](#note-)
+ * [Case Study Questions](#case-study-questions-)
+ * [Insights](#insights-)
 
 # Project Overview 📋
 - Danny is running a Japanese restaurant called Danny's Diner.
