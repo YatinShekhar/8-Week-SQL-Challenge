@@ -350,7 +350,7 @@ select *,
 from cte;
 ```
 
-# Insights: 🔬
+# Insights: 🔍
 
 ## 1. High-Value Customers
 
