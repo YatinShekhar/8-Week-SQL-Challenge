@@ -8,6 +8,6 @@ I will be taking up this challenge and will be improving my SQL skills by workin
 
 
 # Case Studies
-Case Study | Topic | Status
-| -- | -- | -- |
-| [1.Danny's Diner](https://github.com/YatinShekhar/8-Week-SQL-Challenge/tree/main/Case%20Study%201%3A%20Danny's%20Diner) | Customer Insights and Sales Analysis | Completed ✅ |
+Case Study | Topic | Timeline | Status
+| -- | -- | -- | -- |
+| [1.Danny's Diner](https://github.com/YatinShekhar/8-Week-SQL-Challenge/tree/main/Case%20Study%201%3A%20Danny's%20Diner) | Customer Insights and Sales Analysis | June 11, 2024 | Completed ✅ |
