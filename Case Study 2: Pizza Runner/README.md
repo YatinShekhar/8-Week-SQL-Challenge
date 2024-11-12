@@ -33,7 +33,7 @@ the Pizza Runner's operations and to guide his runners well.
 - **pizza_recipes:** The specific toppings used in the making of specific pizzas.
 
 # Note: 💡
-There are few questions in this case study which are quite complex, therefore I would be breaking queries into different parts for better understanding.
+I have solved each question using a single SQL statement. But for your understanding, I will breaking some of the complex questions into different steps.
 
 # Data Cleaning ⛏
 Their are two tables `customer_orders` and `runner_orders` which needs cleaning like handling **null**, cleaning particular columns, assigning proper datatypes, etc., before using them into the queries.
@@ -54,7 +54,7 @@ describe customer_orders;
 | extras       | varchar(4) | YES  |     |         |       |
 | order_time   | timestamp  | YES  |     |         |       |
 
-By looking at the metadata, it seems preety fine. Therefore, we do not require `DDL Commands` to change the structure of the data.
+By looking at the metadata, it seems pretty fine. Therefore, we do not require `DDL Commands` to change the structure of the data.
 
 This is how the uncleaned table looks like :-
 
@@ -189,4 +189,308 @@ This is how the cleaned version looks like :-
 | 8        | 2         | 2020-01-10 00:15:02  | 23.4     | 15       |                          |
 | 9        | 2         |                      |          |          | Customer Cancellation    |
 | 10       | 1         | 2020-01-11 18:50:20  | 10       | 10       |                          |
+
+Since the tables have been cleaned, therefore let's move to the case studies.
+
+# Case Studies ❓
+
+This project consists of 5 different case studies. Therefore we will be solving them one by one.
+
+# 1. Pizza Metrices
+
+## 1.1 How many pizzas were ordered?
+
+```sql
+select count(*) as pizza_ordered
+from customer_orders;
+```
+| pizzas_ordered |
+|----------------|
+| 14             |
+
+- There were a total of 14 pizzas ordered from `Pizza Runner`
+
+## **1.2 How many unique customer orders were made?**
+
+```sql
+select count(distinct order_id) as unique_customer_orders
+from customer_orders;
+```
+| unique_customer_orders |
+|------------------------|
+| 10                     |
+
+- Total 10 orders were unique customer orders
+
+## **1.3 How many successful orders were delivered by each runner?**
+
+- Successful orders are the orders which were delivered and not cancelled by the customer or the restaurant.
+
+```sql
+select runner_id, count(order_id) as successful_deliveries
+from runner_orders
+where cancellation is null
+group by runner_id;
+```
+
+| runner_id | successful_deliveries |
+|-----------|------------------------|
+| 1         | 4                      |
+| 2         | 3                      |
+| 3         | 1                      |
+
+- **Runner 1** delivered 4 orders
+- **Runner 2** delivered 3 orders
+- **Runner 3** delivered 1 successful order
+
+## **1.4 How many each type of pizza was delivered?**
+
+```sql
+select pizza_id, pizza_name, count(*) as pizza_delivered
+from customer_orders
+inner join pizza_names using(pizza_id)
+inner join runner_orders using(order_id)
+where cancellation is null
+group by pizza_id, pizza_name;
+```
+
+| pizza_id | pizza_name  | pizzas_delivered |
+|----------|-------------|------------------|
+| 1        | Meatlovers  | 9               |
+| 2        | Vegetarian  | 3               |
+
+- There were total 14 pizzas ordered. Out of them 12 were delivered and 2 were cancelled.
+- Out of 12 delivered pizzas, 9 were `Meatlovers` and 3 were `Vegetarian`
+
+## **1.5 How many Vegetarian and Meatlovers were ordered by each customer?**
+
+```sql
+select customer_id,
+sum(case when pizza_name = 'Meatlovers' then 1 else 0 end) as Meatlovers , 
+sum(case when pizza_name = 'Vegetarian' then 1 else 0 end) as Vegetarian 
+from customer_orders
+inner join pizza_names using(pizza_id)
+group by customer_id;
+```
+
+| customer_id | Meatlovers | Vegetarian |
+|-------------|------------|------------|
+| 101         | 2          | 1          |
+| 102         | 2          | 1          |
+| 103         | 3          | 1          |
+| 104         | 3          | 0          |
+| 105         | 0          | 1          |
+
+- By looking at the result, it seems customers loves `Meatlovers` as compared to `Vegetarian`
+
+## **1.6 What was the maximum number of pizzas delivered in a single order?**
+
+```sql
+select co.order_id, co.customer_id, count(*) as no_of_orders_delivered
+from customer_orders co 
+inner join runner_orders ro using(order_id)
+where cancellation is null
+group by order_id, customer_id
+order by no_of_orders_delivered desc
+limit 1;
+```
+
+| order_id | customer_id | no_of_orders_delivered |
+|----------|-------------|------------------------|
+| 4        | 103         | 3                      |
+
+- `Customer 103` ordered maximum number of pizzas in an order
+
+## **1.7 For each customer, how many delivered pizzas had at least 1 change and how many had no changes?**
+
+```sql
+select customer_id,
+sum(case when exclusions is null and extras is null then 1 else 0 end) as had_no_change,
+sum(case when exclusions is not null or extras is not null then 1 else 0 end) as had_at_least_one_change
+from customer_orders 
+inner join runner_orders using(order_id)
+where cancellation is null
+group by customer_id;
+```
+
+| customer_id | had_no_change | had_at_least_one_change |
+|-------------|---------------|-------------------------|
+| 101         | 2             | 0                       |
+| 102         | 3             | 0                       |
+| 103         | 0             | 3                       |
+| 104         | 1             | 2                       |
+| 105         | 0             | 1                       |
+
+## **1.8 How many pizzas were delivered that had both exclusions and extras?**
+
+```sql
+select sum(case when exclusions is not null and extras is not null then 1 else 0 end) as no_of_pizzas_with_exclusion_and_extras
+from customer_orders 
+inner join runner_orders using(order_id)
+where cancellation is null;
+```
+
+| no_of_pizzas_with_exclusion_and_extras |
+|----------------------------------------|
+| 1                                      |
+
+## **1.9 What was the total volume of pizzas ordered for each hour of the day?**
+
+```sql
+with recursive cte as (
+select 0 as hour
+union all
+select hour + 1 from cte where hour < 23)
+select hour as hour_of_the_day,
+sum(case when order_time is not null then 1 else 0 end) as total_orders
+from cte
+left join customer_orders
+on cte.hour = hour(order_time)
+group by hour;
+```
+
+I will break this problem into two different stpes.
+
+- Step 1- Creating each hour of the day using `recursive cte`
+
+```sql
+with recursive cte as (
+select 0 as hour
+union all
+select hour + 1 from cte where hour < 23)
+select * from cte
+```
+
+| cte |
+|-----|
+| 0  |
+| 1  |
+| 2  |
+| 3  |
+| 4  |
+| 5  |
+| 6  |
+| 7  |
+| 8  |
+| 9  |
+| 10 |
+| 11 |
+| 12 |
+| 13 |
+| 14 |
+| 15 |
+| 16 |
+| 17 |
+| 18 |
+| 19 |
+| 20 |
+| 21 |
+| 22 |
+| 23 |
+
+- Step 2- Querying orders for each hour and joining it to above table.
+
+```sql
+select hour as hour_of_the_day,
+sum(case when order_time is not null then 1 else 0 end) as total_orders
+from cte
+left join customer_orders
+on cte.hour = hour(order_time)
+group by hour;
+```
+
+| hour_of_the_day | total_orders |
+|-----------------|--------------|
+| 0               | 0            |
+| 1               | 0            |
+| 2               | 0            |
+| 3               | 0            |
+| 4               | 0            |
+| 5               | 0            |
+| 6               | 0            |
+| 7               | 0            |
+| 8               | 0            |
+| 9               | 0            |
+| 10              | 0            |
+| 11              | 1            |
+| 12              | 0            |
+| 13              | 3            |
+| 14              | 0            |
+| 15              | 0            |
+| 16              | 0            |
+| 17              | 0            |
+| 18              | 3            |
+| 19              | 1            |
+| 20              | 0            |
+| 21              | 3            |
+| 22              | 0            |
+| 23              | 3            |
+
+- Firstly created 24 hours of the day, using `recursive cte`
+- Then queried for all the orders in each hour
+- And finally joined them
+
+## **10. What was the volume of orders for each day of the week?**
+
+```sql
+with recursive cte as (
+select now() as a, now() as b
+union all
+select a, date_add(b, interval 1 day) from cte where 
+datediff(b,a) <6 )
+select dayname(b) as day, count(order_id) as total_orders from cte 
+left join customer_orders co
+on dayname(b) = dayname(order_time)
+group by 1;
+```
+
+This problem will also be broken down into two different stpes
+
+- Step 1 - Creating each day of the week using `recursive cte`
+
+```sql
+with recursive cte as (
+select curdate() as a, curdate() as b
+union all
+select a, date_add(b, interval 1 day) from cte where 
+datediff(b,a) <6 )
+, cte2 as (
+select dayname(b) as day from cte)
+select * from cte2;
+```
+
+| day       |
+|-----------|
+| Tuesday   |
+| Wednesday |
+| Thursday  |
+| Friday    |
+| Saturday  |
+| Sunday    |
+| Monday    |
+
+- Step 2 - Querying orders for each day and joining it to the above table
+
+```sql
+select day, count(order_id) as total_orders from cte2
+left join customer_orders co
+on day = dayname(order_time)
+group by day;
+```
+
+| day       | total_orders |
+|-----------|--------------|
+| Tuesday   | 0            |
+| Wednesday | 5            |
+| Thursday  | 3            |
+| Friday    | 1            |
+| Saturday  | 5            |
+| Sunday    | 0            |
+| Monday    | 0            |
+
+- Firstly created 7 days of the week, using `recursive cte`
+- Then queried for all the orders in each day
+- And finally joined them
+
+
 
