@@ -9,8 +9,8 @@ use dannys_diner;
 -- Create the sales table
 CREATE TABLE IF NOT EXISTS sales (
 customer_id VARCHAR(1),
-  order_date DATE,
-  product_id INTEGER
+order_date DATE,
+product_id INTEGER
 );
 
 
