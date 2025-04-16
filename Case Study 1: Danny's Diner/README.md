@@ -77,7 +77,7 @@ have more than one item as their first purchase._
 with cte as 
 	(select *, dense_rank() over(partition by customer_id order by order_date) as rn
 	from sales s 
-    inner join menu m using(product_id))
+        inner join menu m using(product_id))
 select customer_id, product_name 
 from cte 
 where rn = 1
