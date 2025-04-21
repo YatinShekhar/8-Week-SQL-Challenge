@@ -1142,7 +1142,6 @@ inner join pizza_names pn using(pizza_id);
 | 3        | Supreme     | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 |
 
 - `Supreme` pizza contains all the toppings
-<<<<<<< HEAD
 
 # Insights: 🔍
 
@@ -1155,10 +1154,4 @@ times.
 
 `1:00 PM`, `6:00 PM`, `9:00 PM` and `11:00 PM` are usually the the peak active hours usually because it is either the lunch time or the dinner time.
 Most of the orders are ordered on `Wednesday`, `Thursday` and `Saturday` which indicates people usually like to have something else other than pizza on weekends.
-
-
-
-
-
-=======
->>>>>>> 33d78920778d6cd6c4df8eeb5d8142aef0df5cc2
+We would like to enjoy
