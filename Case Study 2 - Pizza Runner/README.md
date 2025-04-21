@@ -12,7 +12,7 @@ This is the second case study of **8 Week SQL Challenge**.
  * [Entity Relationship Diagram](#entity-relationship-diagram-)
  * [Note](#note-)
  * [Data Cleaning](#data-cleaning-)
- * [Case Study Questions](#case-study-questions-)
+ * [Case Studies](#case-studies-)
  * [Insights](#insights-)
 
 # Project Overview 📋
@@ -196,9 +196,9 @@ This case study has been grouped into 5 different parts-
 4. [Pricing and Ratings](#pricing-and-ratings-)
 5. [Bonus Question](#bonus-question-)
 
-# 1. Pizza Metrices
+# Pizza Metrices
 
-## **1.1 How many pizzas were ordered?**
+## **1. How many pizzas were ordered?**
 
 ```sql
 select 
@@ -211,7 +211,7 @@ from customer_orders;
 
 - There were a total of 14 pizzas ordered from `Pizza Runner`
 
-## **1.2 How many unique customer orders were made?**
+## **2. How many unique customer orders were made?**
 
 ```sql
 select 
@@ -224,9 +224,7 @@ from customer_orders;
 
 - Total 10 orders were unique customer orders
 
-## **1.3 How many successful orders were delivered by each runner?**
-
-- Successful orders are the orders which were delivered and not cancelled by the customer or the restaurant.
+## **3. How many successful orders were delivered by each runner?**
 
 ```sql
 select 
@@ -247,7 +245,7 @@ group by runner_id;
 - **Runner 2** delivered 3 orders
 - **Runner 3** delivered 1 successful order
 
-## **1.4 How many each type of pizza was delivered?**
+## **4. How many each type of pizza was delivered?**
 
 ```sql
 select 
@@ -269,7 +267,7 @@ group by pizza_id, pizza_name;
 - There were total 14 pizzas ordered. Out of them 12 were delivered and 2 were cancelled.
 - Out of 12 delivered pizzas, 9 were `Meatlovers` and 3 were `Vegetarian`
 
-## **1.5 How many Vegetarian and Meatlovers were ordered by each customer?**
+## **5. How many Vegetarian and Meatlovers were ordered by each customer?**
 
 ```sql
 select 
@@ -291,7 +289,7 @@ group by customer_id;
 
 - By looking at the result, it seems customers loves `Meatlovers` as compared to `Vegetarian`
 
-## **1.6 What was the maximum number of pizzas delivered in a single order?**
+## **6. What was the maximum number of pizzas delivered in a single order?**
 
 ```sql
 select 
@@ -312,7 +310,7 @@ limit 1;
 
 - `Customer 103` ordered maximum number of pizzas in an order
 
-## **1.7 For each customer, how many delivered pizzas had at least 1 change and how many had no changes?**
+## **7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?**
 
 ```sql
 select 
@@ -335,7 +333,7 @@ group by customer_id;
 
 - `Customer 103` had done the most changes while `Customer 102` had the minimum changes
 
-## **1.8 How many pizzas were delivered that had both exclusions and extras?**
+## **8. How many pizzas were delivered that had both exclusions and extras?**
 
 ```sql
 select 
@@ -351,7 +349,7 @@ where cancellation is null;
 
 - There was just 1 pizza which had both the `excluded` as well as `extra` toppings.
 
-## **1.9 What was the total volume of pizzas ordered for each hour of the day?**
+## **9. What was the total volume of pizzas ordered for each hour of the day?**
 
 ```sql
 with recursive cte as 
@@ -430,7 +428,7 @@ group by 1;
 - No orders are placed on `Sunday`, `Monday` and `Tuesday`
 
 
-# 2. Runners and Customer Experiences
+# Runners and Customer Experiences
 
 ## **1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)**
 
@@ -627,7 +625,7 @@ from cte;
 - `Runner 1` had the successful delivery percentage of 100
 
 
-# 3. Ingredient Optimisation
+# Ingredient Optimisation
 
 ## **1. What are the standard ingredients for each pizza?**
 
@@ -724,13 +722,13 @@ limit 1;
 |------------|--------------|----------------------|
 | 4          | Cheese       | 4                    |
 
--- Cheese was excluded in 4 of the 14 pizzas
+-- `Cheese` was excluded in 4 of the 14 pizzas
 
 ## **4. Generate an order item for each record in the customers_orders table in the format of one of the following:**
-## Meat Lovers
-## Meat Lovers - Exclude Beef
-## Meat Lovers - Extra Bacon
-## Meat Lovers - Exclude Cheese, Bacon - Extra Mushroom, Peppers
+### Meat Lovers
+### Meat Lovers - Exclude Beef
+### Meat Lovers - Extra Bacon
+### Meat Lovers - Exclude Cheese, Bacon - Extra Mushroom, Peppers
 
 ```sql
 with cte as 
@@ -804,8 +802,7 @@ inner join cte3 using(rn);
 | 10       | 104         | Meatlovers - Exclude BBQ Sauce, Mushrooms - Extra Bacon, Cheese |
 
 
-## **5. Generate an alphabetically ordered comma separated ingredient list for each pizza order from the customer_orders table and add a 2x in front of any relevant ingredients 
-For example: "Meat Lovers: 2xBacon, Beef, ... , Salami"
+## **5. Generate an alphabetically ordered comma separated ingredient list for each pizza order from the customer_orders table and add a 2x in front of any relevant ingredients. For example: "Meat Lovers: 2xBacon, Beef, ... , Salami"**
 
 ```sql
 with recursive cte as 
@@ -946,7 +943,7 @@ order by ingredient_quantity desc;
 - `Bacon` is used the most in all the pizzas followed by `Mushrooms`
 - The least used ingredient is `Tomato Sauce`
 
-# 4. Pricing and Ratings
+# Pricing and Ratings
 
 ## **1. If a Meat Lovers pizza costs $12 and Vegetarian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?**
 
@@ -1025,26 +1022,26 @@ select * from ratings;
 | 8        | 102         | 2         | 4      |
 | 10       | 104         | 1         | 5      |
 
-` When delivery time is less than 10 minutes than rating is 5
-` When delivery time is more than 10 and less than 20 mins than 4
-` When delivery time is between 20 and 30 then 3
-` When deilvery is less tahn 40 minutes than 2
-` And in all other cases it's 1
+- When delivery time is less than 10 minutes than rating is 5
+- When delivery time is more than 10 and less than 20 mins than 4
+- When delivery time is between 20 and 30 then 3
+- When deilvery is less tahn 40 minutes than 2
+- And in all other cases it's 1
 
-- Runner 1 has the highest and the lowest rating amongst all.
+- `Runner 1` has the highest and the lowest rating amongst all.
 
 
 ## **4. Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries?**
--- customer_id
--- order_id
--- runner_id
--- rating
--- order_time
--- pickup_time
--- Time between order and pickup
--- Delivery duration
--- Average speed
--- Total number of pizzas
+- customer_id
+- order_id
+- runner_id
+- rating
+- order_time
+- pickup_time
+- Time between order and pickup
+- Delivery duration
+- Average speed
+- Total number of pizzas
 
 ```sql
 with cte as 
@@ -1117,7 +1114,7 @@ from cte join cte2;
 | $94.4            |
 
 
-# 5. Bonus Question
+# Bonus Question
 
 ## **If Danny wants to expand his range of pizzas - how would this impact the existing data design? Write an INSERT statement to demonstrate what would happen if a new Supreme pizza with all the toppings was added to the Pizza Runner menu?**
 
@@ -1145,3 +1142,20 @@ inner join pizza_names pn using(pizza_id);
 | 3        | Supreme     | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 |
 
 - `Supreme` pizza contains all the toppings
+
+# Insights: 🔍
+
+##  1. Pizza Preferences
+
+`Meatlovers` is clearly the most popular pizza (75% of deliveries) while `Vegetarian` is ordered only 25% 
+times.
+
+## 2. Peak Ordering
+
+`1:00 PM`, `6:00 PM`, `9:00 PM` and `11:00 PM` are usually the the peak active hours usually because it is either the lunch time or the dinner time.
+Most of the orders are ordered on `Wednesday`, `Thursday` and `Saturday` which indicates people usually like to have something else other than pizza on weekends.
+
+
+
+
+
