@@ -190,11 +190,11 @@ Since the tables have been cleaned, therefore let's move to the case studies.
 # Case Studies ❓
 
 This case study has been grouped into 5 different parts-
-1. [Pizza Metrices](#1.-pizza-metrices-)
-2. [Runners and Customer Experiences](#2.-runners-and-customer-experiences-)
-3. [Ingredient Optimisation](#3.-ingredient-optimisation-)
-4. [Pricing and Ratings](#4.-pricing-and-ratings-)
-5. [Bonus Question](#5.-bonus-question-)
+1. [Pizza Metrices](#pizza-metrices-)
+2. [Runners and Customer Experiences](#runners-and-customer-experiences-)
+3. [Ingredient Optimisation](#ingredient-optimisation-)
+4. [Pricing and Ratings](#pricing-and-ratings-)
+5. [Bonus Question](#bonus-question-)
 
 # Pizza Metrices
 
