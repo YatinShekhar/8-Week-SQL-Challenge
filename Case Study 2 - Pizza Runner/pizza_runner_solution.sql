@@ -97,9 +97,13 @@ group by hour;
 
 with recursive cte as 
 (
-    select now() as a, now() as b
+    select 
+        now() as a, 
+        now() as b
     union all
-    select a, date_add(b, interval 1 day) 
+    select 
+        a, 
+        date_add(b, interval 1 day) 
     from cte 
     where datediff(b,a) <6 
     )
@@ -107,9 +111,9 @@ select
     dayname(b) as day, 
     count(order_id) as total_orders 
 from cte 
-left join customer_orders co
-on dayname(b) = dayname(order_time)
-group by 1;
+left join customer_orders co 
+    on dayname(b) = dayname(order_time)
+group by day;
 
 
 -- B. Runners and Customer Experiences
