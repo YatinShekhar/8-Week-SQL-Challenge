@@ -12,3 +12,4 @@ Case Study | Topic | Status
 | -- | -- | -- |
 | [1.Danny's Diner](https://github.com/YatinShekhar/8-Week-SQL-Challenge/tree/main/Case%20Study%201%20-%20Danny's%20Diner) | Customer Insights and Sales Analysis | Completed ✅ |
 | [2.Pizza Runner](https://github.com/YatinShekhar/8-Week-SQL-Challenge/tree/main/Case%20Study%202%20-%20Pizza%20Runner) | Sales and Operational Analysis | Completed ✅ |
+| [3.Foodie Fi](https://github.com/YatinShekhar/8-Week-SQL-Challenge/tree/main/Case%20Study%203%20-%20Foodie%20Fi) | Subscription Business Analysis | Completed ✅ |

@@ -384,24 +384,24 @@ where rn = 2 and plan_name = 'basic monthly';
 # Insights: 🔍
 
 ## 1. Customer Base Overview
-Roughly **1 in 3 customers (30.7%)** have churned over time.
+Roughly `1 in 3 customers (30.7%)` have churned over time.
 
 ## 2. Trial to Plan Conversion
-**March** and **July** are peak months for **trial sign-ups**, suggesting seasonality or effective marketing campaigns.
-**February** is the weakest month possibly due to fewer days or lower engagement.
+`March and July` are peak months for **trial sign-ups**, suggesting seasonality or effective marketing campaigns.
+`February` is the weakest month possibly due to fewer days or lower engagement.
 
 ## 3. Post Trial Decisions
-A **majority 53%** of users move to **Basic Monthly** after trial.
-Only **3.7%** choose the higher-tier **Pro Annual** immediately, indicating hesitancy or cost sensitivity.
+A `majority 53%` of users move to **Basic Monthly** after trial.
+Only `3.7%` choose the higher-tier **Pro Annual** immediately, indicating hesitancy or cost sensitivity.
 
 ## 4. Conversion Timing
-The **0–30 days window** is crucial — **49 customers** convert early, in just **10 days** on average.
-Another major chunk (**42 customers**) convert after **121–150 days**, taking **~4.5 months** to decide.
+The `0–30 days window` is crucial **49 customers** convert early, in just **10 days** on average.
+Another major chunk (`42 customers`) convert after **121–150 days**, taking **~4.5 months** to decide.
 This suggests two distinct behavior types:
  - Impulsive or highly satisfied users.
  - Long-term evaluators who commit after extended usage.
 
 ## 5. Downgrade Insight
-**No downgrades** from **Pro Monthly to Basic Monthly** in 2020 a strong sign that once users commit to Pro, they rarely go backward. Suggests satisfaction or perceived value.
+`No downgrades` from **Pro Monthly to Basic Monthly** in 2020 a strong sign that once users commit to Pro, they rarely go backward. Suggests satisfaction or perceived value.
 
 
