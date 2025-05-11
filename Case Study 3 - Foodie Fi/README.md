@@ -403,12 +403,3 @@ This suggests two distinct behavior types:
 **No downgrades** from **Pro Monthly to Basic Monthly** in 2020 a strong sign that once users commit to Pro, they rarely go backward. Suggests satisfaction or perceived value.
 
 
-# 🧠 Recommendations
-
-- **Retain trial users better** by optimizing onboarding and adding offers during the first 30 days.
-- Consider **nudge campaigns** to convert long-term users into Pro Annual subscribers.
-- Since **Basic Monthly** is sticky, try **up-sell strategies** to move them toward **Pro Monthly**.
-- The **Pro Monthly** plan is a sweet spot, make it even more valuable to reduce churn further.
-- Investigate **February’s poor trial performance**, improve marketing in that period.
-
-
