@@ -10,8 +10,8 @@ This is the third case study of **8 Week SQL Challenge**.
 # Table Of Content 📋
  * [Project Overview](#project-overview-)
  * [Entity Relationship Diagram](#entity-relationship-diagram-)
- * [Tables](#tables-)
- * [Note](#note-)
+ * [Tables](#tables)
+ * [Note](#note)
  * [Case Studies](#case-studies-)
  * [Insights](#insights-)
 
@@ -36,6 +36,8 @@ This is the third case study of **8 Week SQL Challenge**.
 - When customers churn - they will keep their access until the end of their current billing period but the `start_date` will be technically the day they decided to cancel their service.
 
 # Case Studies ❓
+
+This case study has 2 segments -
 
 1. [Customer Journey](#customer-journey)
 2. [Data Analysis Questions](#data-analysis-questions)
