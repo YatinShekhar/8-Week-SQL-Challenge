@@ -1320,7 +1320,7 @@ from cte inner join cte2
     using(order_id);
 ```
 
-| customer_id | order_id | runner_id | rating | pickup_time          | delivery_time        | time_diff | delivery_duration | avg_speed | total_pizzas |
+| customer_id | order_id | runner_id | rating | order_time           | pickup_time          | time_diff | delivery_duration | avg_speed | total_pizzas |
 |-------------|----------|-----------|--------|----------------------|----------------------|-----------|-------------------|-----------|--------------|
 | 101         | 1        | 1         | 2      | 2020-01-01 18:05:02  | 2020-01-01 18:15:34  | 10 min   | 32 min            | 37.5 km/h | 1            |
 | 101         | 2        | 1         | 3      | 2020-01-01 19:00:52  | 2020-01-01 19:10:54  | 10 min   | 27 min            | 44.4 km/h | 1            |
