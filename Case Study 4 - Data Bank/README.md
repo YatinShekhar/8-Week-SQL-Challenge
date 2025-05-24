@@ -358,7 +358,7 @@ where rn = 1;
 
 - - The closing balance of `Customer 1` for `January` and `March` is `$ 312` and `-$ 640` respectively
 
-## **3. Minimum, average and maximum values of the running balance for each customer
+## **3. Minimum, average and maximum values of the running balance for each customer**
 
 ```sql
 with cte as
@@ -391,17 +391,17 @@ group by customer_id;
 
 # Insights: 🔍
 
-## 1. Australia-Centric Operations 
+## 1. Australia-Centric Operations 🌏
 The bank is clearly strongest in `Australia` with the highest node count and customer concentration, followed by America. `Europe` appears to be an underdeveloped market
 
-## 2. Financial Health
+## 2. Financial Health 💰
 `$1.35M` in deposits vs `$793K` withdrawals indicates growing customer trust, positive cashflow for the bank and healhty liquidity
 
-## 3. Quality Customer Base
+## 3. Quality Customer Base 💎
 Average deposits of `$2,718` across 5 transactions suggests customers are making substantial, regular deposits rather than small, frequent ones
 
-# 4. Montly Business Pattern
+## 4. Montly Business Pattern 📅
 `January`, `February` and  `March` showing highest activity indicates strong start-of-year financial planning
 
-## 5. Impressive Growth Rate
+## 5. Impressive Growth Rate 📈
 `53.8%` of customers increasing their closing balance by >5% indicates strong customer satisfaction and engagement
