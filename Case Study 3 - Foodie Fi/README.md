@@ -1,4 +1,4 @@
-# Case Study #3- Foodie Fi 🍱
+# Case Study #3- Foodie Fi 🥑
 <img src="https://8weeksqlchallenge.com/images/case-study-designs/3.png" alt="Image Description" width="400">
 
 This is the third case study of **8 Week SQL Challenge**.
